@@ -1,0 +1,6 @@
+# Convertir les fins de ligne des fichiers texte en LF
+* text=auto eol=lf
+
+# Ne pas convertir les fins de ligne des fichiers binaires
+*.pdf binary
+*.jpg binary
