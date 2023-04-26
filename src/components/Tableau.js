@@ -1,58 +1,84 @@
-import React from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import React, { useState } from 'react';
+import { useDrag, useDrop, DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Item = styled.div`
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 rgba(9,30,66,.25);
+  padding: 8px;
+  margin-bottom: 8px;
+`;
+
+const data = [
+  { id: '1', title: 'Tâche 1' },
+  { id: '2', title: 'Tâche 2' },
+  { id: '3', title: 'Tâche 3' },
+  { id: '4', title: 'Tâche 4' },
+];
 
 const Tableau = () => {
-  // Tableau de données pour les éléments à afficher
-  const data = [
-    { id: '1', title: 'Tâche 1' },
-    { id: '2', title: 'Tâche 2' },
-    { id: '3', title: 'Tâche 3' },
-    { id: '4', title: 'Tâche 4' },
-  ];
+  const [cards, setCards] = useState(data);
 
-  // Fonction pour afficher chaque élément draggable
-  const Item = ({ item, index }) => (
-    <Draggable draggableId={item.id} index={index}>
-      {(provided) => (
-        <div
-          className="item"
-          {...provided.draggableProps}
-          {...provided.dragHandleProps}
-          ref={provided.innerRef}
-        >
-          {item.title}
-        </div>
-      )}
-    </Draggable>
-  );
-
-  // Fonction pour afficher la liste des éléments draggable
-  const List = ({ data }) => (
-    <Droppable droppableId="list">
-      {(provided) => (
-        <div
-          className="list"
-          {...provided.droppableProps}
-          ref={provided.innerRef}
-        >
-          {data.map((item, index) => (
-            <Item key={item.id} item={item} index={index} />
-          ))}
-          {provided.placeholder}
-        </div>
-      )}
-    </Droppable>
-  );
-
-  // Fonction pour gérer les événements de drag and drop
-  const onDragEnd = (result) => {
-    // TODO: Implémenter la logique pour le drag and drop
+  const handleDrop = (sourceIndex, destinationIndex) => {
+    const newCards = [...cards];
+    const [removed] = newCards.splice(sourceIndex, 1);
+    newCards.splice(destinationIndex, 0, removed);
+    setCards(newCards);
   };
 
+  const DraggableItem = ({ id, title, index }) => {
+    const [{ isDragging }, drag] = useDrag({
+      type: 'item',
+      item: { index },
+      collect: (monitor) => ({
+        isDragging: monitor.isDragging(),
+      }),
+    });
+  
+    const [, drop] = useDrop({
+      accept: 'item',
+      hover: (item, monitor) => {
+        if (item.index !== index) {
+          const dragIndex = item.index;
+          const hoverIndex = index;
+  
+          handleDrop(dragIndex, hoverIndex);
+  
+          item.index = hoverIndex;
+        }
+      },
+    });
+  
+    return (
+      <div ref={(node) => drag(drop(node))}>
+        <Item style={{ opacity: isDragging ? 0.5 : 1 }}>
+          {title}
+        </Item>
+      </div>
+    );
+  };
+  
+
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <List data={data} />
-    </DragDropContext>
+    <DndProvider backend={HTML5Backend}>
+      <Container>
+        {cards.map((card, index) => (
+          <DraggableItem
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            index={index}
+          />
+        ))}
+      </Container>
+    </DndProvider>
   );
 };
 
