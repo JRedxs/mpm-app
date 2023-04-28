@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import TaskBoard from './components/TaskBoard';
 import PERTChart from './components/PERTChart';
+import Draggable from 'react-draggable';
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -126,8 +127,15 @@ const App = () => {
             </select>
             <button type="submit">Ajouter une tâche</button>
           </form>
-
           <TaskBoard tasks={selectedProjectObj.tasks} />
+
+          <h1>
+            {projects.map((project) => (
+          <p key={project.id} value={project.id}>
+           Projet : {project.name}
+          </p>
+        ))}
+          </h1>
           <PERTChart tasks={selectedProjectObj.tasks} />
         </>
       )}

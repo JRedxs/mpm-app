@@ -2,6 +2,8 @@ import React from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Task from './Task';
+import Draggable from 'react-draggable';
+
 
 const TaskBoard = ({ tasks }) => {
   const findPrevTaskNames = (prevTaskIds) => {
@@ -9,9 +11,12 @@ const TaskBoard = ({ tasks }) => {
   };
 
   return (
+  
     <DndProvider backend={HTML5Backend}>
+     
       <div className="task-board">
         {tasks.map((task) => (
+          
           <Task
             key={task.id}
             id={task.id}
@@ -21,7 +26,9 @@ const TaskBoard = ({ tasks }) => {
           />
         ))}
       </div>
+      
     </DndProvider>
+   
   );
 };
 
