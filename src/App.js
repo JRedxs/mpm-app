@@ -3,6 +3,14 @@ import './App.css';
 import TaskBoard from './components/TaskBoard';
 import PERTChart from './components/PERTChart';
 import Draggable from 'react-draggable';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -73,14 +81,30 @@ const App = () => {
       <h1>Application MPM et PERT</h1>
 
       <form onSubmit={handleProjectSubmit}>
-        <input
-          type="text"
-          value={newProject}
-          onChange={handleProjectChange}
-          placeholder="Nom du projet"
-          required
-        />
-        <button type="submit">Ajouter un projet</button>
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+        >
+          <TextField id="outlined-basic" label="Nom du projet" variant="outlined"
+            type="text"
+            value={newProject}
+            onChange={handleProjectChange}
+            placeholder="Nom du projet"
+            required
+          />
+        </Box>
+        {/* <input
+            type="text"
+            value={newProject}
+            onChange={handleProjectChange}
+            placeholder="Nom du projet"
+            required
+          />&nbsp;&nbsp; */}
+        <Button type="submit" variant="contained">Ajouter un projet</Button>
       </form>
 
       <select value={selectedProject || ''} onChange={handleProjectSelect}>
@@ -97,14 +121,32 @@ const App = () => {
       {selectedProjectObj && (
         <>
           <form onSubmit={handleSubmit}>
-            <input
+            <Box
+              component="form"
+              sx={{
+                '& > :not(style)': { m: 1, width: '25ch' },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <TextField id="outlined-basic" label="Nom de la tâche" variant="outlined"
+                type="text"
+                name="name"
+                value={newTask.name}
+                onChange={handleChange}
+                placeholder="Nom de la tâche"
+                required
+
+              />
+            </Box>
+            {/* <input
               type="text"
               name="name"
               value={newTask.name}
               onChange={handleChange}
               placeholder="Nom de la tâche"
               required
-            />
+            /> */}
             <input
               type="number"
               name="duration"
@@ -113,28 +155,30 @@ const App = () => {
               placeholder="Durée (jours)"
               required
             />
-            <select
+            <Box sx={{ minWidth: 120 }}>
+            <Select
               name="prevTasks"
               value={newTask.prevTasks}
               onChange={handleSelectChange}
               multiple
             >
               {selectedProjectObj.tasks.map((task) => (
-                  <option key={task.id} value={task.id}>
+                <option key={task.id} value={task.id}>
                   {task.name}
                 </option>
               ))}
-            </select>
-            <button type="submit">Ajouter une tâche</button>
+            </Select>
+            </Box>
+            <Button type="submit" variant="contained">Ajouter une tâche</Button>
           </form>
           <TaskBoard tasks={selectedProjectObj.tasks} />
 
           <h1>
             {projects.map((project) => (
-          <p key={project.id} value={project.id}>
-           Projet : {project.name}
-          </p>
-        ))}
+              <p key={project.id} value={project.id}>
+                Projet : {project.name}
+              </p>
+            ))}
           </h1>
           <PERTChart tasks={selectedProjectObj.tasks} />
         </>

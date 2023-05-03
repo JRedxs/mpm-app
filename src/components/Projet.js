@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+
 function Projet({ ajouterProjet }) {
   const [nomProjet, setNomProjet] = useState('');
   const [dateDebut, setDateDebut] = useState('');
@@ -27,7 +28,9 @@ function Projet({ ajouterProjet }) {
         <input type="date" value={dateFin} onChange={(e) => setDateFin(e.target.value)} />
       </label>
       <br />
-      <button type="submit">Ajouter</button>
+      <Stack spacing={2} direction="row">
+        <Button type="submit">Ajouter</Button>
+      </Stack>
     </form>
   );
 }
