@@ -106,8 +106,9 @@ const App = () => {
           />&nbsp;&nbsp; */}
         <Button type="submit" variant="contained">Ajouter un projet</Button>
       </form>
+      <br/>
 
-      <select value={selectedProject || ''} onChange={handleProjectSelect}>
+      <Select value={selectedProject || ''} onChange={handleProjectSelect}>
         <option value="" disabled>
           Sélectionnez un projet
         </option>
@@ -116,7 +117,7 @@ const App = () => {
             {project.name}
           </option>
         ))}
-      </select>
+      </Select>
 
       {selectedProjectObj && (
         <>
@@ -138,7 +139,7 @@ const App = () => {
                 required
 
               />
-            </Box>
+            
             {/* <input
               type="text"
               name="name"
@@ -147,7 +148,7 @@ const App = () => {
               placeholder="Nom de la tâche"
               required
             /> */}
-            <input
+            <TextField id="outlined-basic" label="Durée de la tâche" variant="outlined"
               type="number"
               name="duration"
               value={newTask.duration}
@@ -155,8 +156,7 @@ const App = () => {
               placeholder="Durée (jours)"
               required
             />
-            <Box sx={{ minWidth: 120 }}>
-            <Select
+            <select
               name="prevTasks"
               value={newTask.prevTasks}
               onChange={handleSelectChange}
@@ -167,7 +167,7 @@ const App = () => {
                   {task.name}
                 </option>
               ))}
-            </Select>
+            </select>
             </Box>
             <Button type="submit" variant="contained">Ajouter une tâche</Button>
           </form>
