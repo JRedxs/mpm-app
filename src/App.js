@@ -11,6 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import monImage from './img/monImage.jpg';
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -77,8 +78,15 @@ const App = () => {
   };
 
   return (
+
+
     <div className="App">
-      <h1>Application MPM et PERT</h1>
+
+      <div style={{ backgroundImage: `url(${monImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '500px' }}>
+        {/* Le contenu de votre composant */}
+      
+       {/* <h1>Application MPM et PERT</h1> */}
+      
 
       <form onSubmit={handleProjectSubmit}>
         <Box
@@ -89,7 +97,7 @@ const App = () => {
           noValidate
           autoComplete="off"
         >
-          <TextField id="outlined-basic" label="Nom du projet" variant="outlined"
+          <TextField id="outlined-basic" label="Nom du projet" variant="outlined" style={{border: '2px solid black', borderRadius: "4px"}}
             type="text"
             value={newProject}
             onChange={handleProjectChange}
@@ -106,9 +114,9 @@ const App = () => {
           />&nbsp;&nbsp; */}
         <Button type="submit" variant="contained">Ajouter un projet</Button>
       </form>
-      <br/>
+      <br />
 
-      <Select value={selectedProject || ''} onChange={handleProjectSelect}>
+      <Select value={selectedProject || ''} onChange={handleProjectSelect} style={{border: '2px solid black', borderRadius: "4px"}}>
         <option value="" disabled>
           Sélectionnez un projet
         </option>
@@ -130,7 +138,7 @@ const App = () => {
               noValidate
               autoComplete="off"
             >
-              <TextField id="outlined-basic" label="Nom de la tâche" variant="outlined"
+              <TextField id="outlined-basic" label="Nom de la tâche" variant="outlined" style={{border: '2px solid black', borderRadius: "4px"}}
                 type="text"
                 name="name"
                 value={newTask.name}
@@ -139,8 +147,8 @@ const App = () => {
                 required
 
               />
-            
-            {/* <input
+
+              {/* <input
               type="text"
               name="name"
               value={newTask.name}
@@ -148,26 +156,26 @@ const App = () => {
               placeholder="Nom de la tâche"
               required
             /> */}
-            <TextField id="outlined-basic" label="Durée de la tâche" variant="outlined"
-              type="number"
-              name="duration"
-              value={newTask.duration}
-              onChange={handleChange}
-              placeholder="Durée (jours)"
-              required
-            />
-            <select
-              name="prevTasks"
-              value={newTask.prevTasks}
-              onChange={handleSelectChange}
-              multiple
-            >
-              {selectedProjectObj.tasks.map((task) => (
-                <option key={task.id} value={task.id}>
-                  {task.name}
-                </option>
-              ))}
-            </select>
+              <TextField id="outlined-basic" label="Durée de la tâche" variant="outlined" style={{border: '2px solid black', borderRadius: "4px"}}
+                type="number"
+                name="duration"
+                value={newTask.duration}
+                onChange={handleChange}
+                placeholder="Durée (jours)"
+                required
+              />
+              <select
+                name="prevTasks"
+                value={newTask.prevTasks}
+                onChange={handleSelectChange}
+                multiple
+              >
+                {selectedProjectObj.tasks.map((task) => (
+                  <option key={task.id} value={task.id}>
+                    {task.name}
+                  </option>
+                ))}
+              </select>
             </Box>
             <Button type="submit" variant="contained">Ajouter une tâche</Button>
           </form>
@@ -183,6 +191,7 @@ const App = () => {
           <PERTChart tasks={selectedProjectObj.tasks} />
         </>
       )}
+      </div>
     </div>
   );
 };

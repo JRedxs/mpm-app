@@ -16,13 +16,13 @@ export default function DenseAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar variant="dense" sx={{ justifyContent: 'space-between' }}>
-          <div>
-            <img src="../public/img/gestionprojet.png" alt="Logo" style={{ height: '24px', marginRight: '8px' }} />
-            <Typography variant="h6" color="inherit" component="div" sx={{ display: 'inline' }}>
-              Projet MPM
-            </Typography>
+        <Toolbar variant="dense" sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            {/*<img src="/mpm-app/src/img/" alt="" style={{ height: '24px', marginRight: '8px' }} />*/}
           </div>
+          <Typography variant="h6" color="inherit" component="div" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <h2>MPM APP</h2>
+          </Typography>
           <IconButton onClick={handleOpenUserMenu} sx={{ p: 2.5 }}>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
           </IconButton>

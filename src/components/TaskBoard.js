@@ -4,6 +4,8 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import Task from './Task';
 import Draggable from 'react-draggable';
 
+import monImage from '../img/monImage.jpg';
+
 
 const TaskBoard = ({ tasks }) => {
   const findPrevTaskNames = (prevTaskIds) => {
@@ -15,6 +17,8 @@ const TaskBoard = ({ tasks }) => {
     <DndProvider backend={HTML5Backend}>
      
       <div className="task-board">
+      <div style={{ backgroundImage: `url(${monImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '500px' }}>
+        {/* Le contenu de votre composant */}
         {tasks.map((task) => (
           
           <Task
@@ -25,6 +29,7 @@ const TaskBoard = ({ tasks }) => {
             prevTasks={findPrevTaskNames(task.prevTasks)}
           />
         ))}
+        </div>
       </div>
       
     </DndProvider>
