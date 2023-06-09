@@ -82,10 +82,17 @@ const App = () => {
 
     <div className="App">
 
-      <div style={{ marginTop: '64px', backgroundImage: `url(${monImage})`, margin: 0, padding: 0, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '800px' }}>
-        {/* Le contenu de votre composant */}
-
-        {/* <h1>Application MPM et PERT</h1> */}
+      <div style={{
+        marginTop: '64px',
+        backgroundImage: `url(${monImage})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        height: '100vh',
+        width: '100vw',
+        margin: 0,
+        padding: 0,
+      }}>
 
 
         <form onSubmit={handleProjectSubmit}>
@@ -101,14 +108,18 @@ const App = () => {
           >
             <TextField
               id="outlined-basic"
-              label="Nom du projet"
-              variant="outlined"
               style={{ border: '2px solid #549fb3', borderRadius: "4px" }}
+              placeholder="Nom du projet"
+              variant="outlined"
               type="text"
               value={newProject}
               onChange={handleProjectChange}
-              placeholder="Nom du projet"
               required
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  backgroundColor: 'white',
+                },
+              }}
             />
             <Button type="submit" variant="contained" style={{ backgroundColor: '#549fb3', color: '#ffffff' }}>
               Ajouter un projet
@@ -149,14 +160,7 @@ const App = () => {
 
                 />
 
-                {/* <input
-              type="text"
-              name="name"
-              value={newTask.name}
-              onChange={handleChange}
-              placeholder="Nom de la tâche"
-              required
-            /> */}
+              
                 <TextField id="outlined-basic" label="Durée de la tâche" variant="outlined" style={{ border: '2px solid #549fb3', borderRadius: "4px" }}
                   type="number"
                   name="duration"

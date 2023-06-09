@@ -17,6 +17,7 @@ function AddProjectForm(props) {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        style={{ backgroundColor: 'white'}}
         placeholder="Nom du projet"
         value={projectName}
         onChange={(event) => setProjectName(event.target.value)}
