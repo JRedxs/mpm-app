@@ -82,7 +82,7 @@ const App = () => {
 
     <div className="App">
 
-      <div style={{ backgroundImage: `url(${monImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '800px' }}>
+      <div style={{ marginTop: '64px', backgroundImage: `url(${monImage})`, margin: 0, padding: 0, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '800px' }}>
         {/* Le contenu de votre composant */}
 
         {/* <h1>Application MPM et PERT</h1> */}

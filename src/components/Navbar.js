@@ -12,7 +12,7 @@ export default function DenseAppBar() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#549fb3', // Remplacez par la couleur de votre choix
+        main: '#549fb3', 
       },
     },
   });
@@ -26,9 +26,14 @@ export default function DenseAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
   <ThemeProvider theme={theme}>
-    <AppBar position="static" style={{
-      boxShadow: '0 3px 5px 2px rgba(0, 0, 0, .3)', // Cette ligne ajoute un dégradé en bas de l'AppBar
-    }}>
+  <AppBar position="static" style={{
+  borderBottom: '1px solid transparent',
+  backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0))',
+  zIndex: 1301, 
+  margin: 0,
+  padding: 0,
+  boxShadow: '0px 3px 5px 2px rgba(0,0,0,0.3)' // Ajout d'une ombre
+}}>
       <Toolbar variant="dense" sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           {/*<img src="/mpm-app/src/img/" alt="" style={{ height: '24px', marginRight: '8px' }} />*/}

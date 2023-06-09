@@ -3,7 +3,7 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Task from './Task';
 
-import monImage from '../img/monImage2.png';
+//import monImage from '../img/monImage2.png';
 
 
 const TaskBoard = ({ tasks }) => {
@@ -12,27 +12,27 @@ const TaskBoard = ({ tasks }) => {
   };
 
   return (
-  
+
     <DndProvider backend={HTML5Backend}>
-     
+
       <div className="task-board">
-      <div style={{ backgroundImage: `url(${monImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '500px' }}>
-        {/* Le contenu de votre composant */}
-        {tasks.map((task) => (
+        <div >
           
-          <Task
-            key={task.id}
-            id={task.id}
-            name={task.name}
-            duration={task.duration}
-            prevTasks={findPrevTaskNames(task.prevTasks)}
-          />
-        ))}
+          {tasks.map((task) => (
+
+            <Task
+              key={task.id}
+              id={task.id}
+              name={task.name}
+              duration={task.duration}
+              prevTasks={findPrevTaskNames(task.prevTasks)}
+            />
+          ))}
         </div>
       </div>
-      
+
     </DndProvider>
-   
+
   );
 };
 
