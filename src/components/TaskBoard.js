@@ -3,7 +3,6 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Task from './Task';
 
-//import monImage from '../img/monImage2.png';
 
 
 const TaskBoard = ({ tasks }) => {

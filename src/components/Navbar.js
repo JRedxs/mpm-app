@@ -32,11 +32,10 @@ export default function DenseAppBar() {
   zIndex: 1301, 
   margin: 0,
   padding: 0,
-  boxShadow: '0px 3px 5px 2px rgba(0,0,0,0.3)' // Ajout d'une ombre
+  boxShadow: '0px 3px 5px 2px rgba(0,0,0,0.3)' 
 }}>
       <Toolbar variant="dense" sx={{ display: 'grid', gridTemplateColumns: 'auto 1fr auto' }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          {/*<img src="/mpm-app/src/img/" alt="" style={{ height: '24px', marginRight: '8px' }} />*/}
         </div>
         <Typography variant="h6" color="inherit" component="div" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <h2>MPM APP</h2>

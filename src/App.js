@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 import TaskBoard from './components/TaskBoard';
 import PERTChart from './components/PERTChart';
-import Draggable from 'react-draggable';
-import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+
 import Select from '@mui/material/Select';
 import monImage from './img/monImage2.png';
 
@@ -38,7 +34,7 @@ const App = () => {
       ? projects.find((project) => project.id === selectedProject)
       : null;
 
-  const [tasks, setTasks] = useState([]);
+
 
   const [newTask, setNewTask] = useState({
     id: '',
