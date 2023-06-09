@@ -2,9 +2,8 @@ import React from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Task from './Task';
-import Draggable from 'react-draggable';
 
-import monImage from '../img/monImage.jpg';
+import monImage from '../img/monImage2.png';
 
 
 const TaskBoard = ({ tasks }) => {

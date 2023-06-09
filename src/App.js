@@ -11,7 +11,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import monImage from './img/monImage.jpg';
+import monImage from './img/monImage2.png';
 
 const App = () => {
   const [projects, setProjects] = useState([]);
@@ -82,73 +82,74 @@ const App = () => {
 
     <div className="App">
 
-      <div style={{ backgroundImage: `url(${monImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '500px' }}>
+      <div style={{ backgroundImage: `url(${monImage})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '800px' }}>
         {/* Le contenu de votre composant */}
-      
-       {/* <h1>Application MPM et PERT</h1> */}
-      
 
-      <form onSubmit={handleProjectSubmit}>
-        <Box
-          component="form"
-          sx={{
-            '& > :not(style)': { m: 1, width: '25ch' },
-          }}
-          noValidate
-          autoComplete="off"
-        >
-          <TextField id="outlined-basic" label="Nom du projet" variant="outlined" style={{border: '2px solid black', borderRadius: "4px"}}
-            type="text"
-            value={newProject}
-            onChange={handleProjectChange}
-            placeholder="Nom du projet"
-            required
-          />
-        </Box>
-        {/* <input
-            type="text"
-            value={newProject}
-            onChange={handleProjectChange}
-            placeholder="Nom du projet"
-            required
-          />&nbsp;&nbsp; */}
-        <Button type="submit" variant="contained">Ajouter un projet</Button>
-      </form>
-      <br />
+        {/* <h1>Application MPM et PERT</h1> */}
 
-      <Select value={selectedProject || ''} onChange={handleProjectSelect} style={{border: '2px solid black', borderRadius: "4px"}}>
-        <option value="" disabled>
-          Sélectionnez un projet
-        </option>
-        {projects.map((project) => (
-          <option key={project.id} value={project.id}>
-            {project.name}
+
+        <form onSubmit={handleProjectSubmit}>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              '& > :not(style)': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <TextField
+              id="outlined-basic"
+              label="Nom du projet"
+              variant="outlined"
+              style={{ border: '2px solid #549fb3', borderRadius: "4px" }}
+              type="text"
+              value={newProject}
+              onChange={handleProjectChange}
+              placeholder="Nom du projet"
+              required
+            />
+            <Button type="submit" variant="contained" style={{ backgroundColor: '#549fb3', color: '#ffffff' }}>
+              Ajouter un projet
+            </Button>
+          </Box>
+        </form>
+        <br />
+
+        <Select value={selectedProject || ''} onChange={handleProjectSelect} style={{ border: '2px solid #549fb3', borderRadius: "4px" }}>
+          <option value="" disabled>
+            Sélectionnez un projet
           </option>
-        ))}
-      </Select>
+          {projects.map((project) => (
+            <option key={project.id} value={project.id}>
+              {project.name}
+            </option>
+          ))}
+        </Select>
 
-      {selectedProjectObj && (
-        <>
-          <form onSubmit={handleSubmit}>
-            <Box
-              component="form"
-              sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
-              }}
-              noValidate
-              autoComplete="off"
-            >
-              <TextField id="outlined-basic" label="Nom de la tâche" variant="outlined" style={{border: '2px solid black', borderRadius: "4px"}}
-                type="text"
-                name="name"
-                value={newTask.name}
-                onChange={handleChange}
-                placeholder="Nom de la tâche"
-                required
+        {selectedProjectObj && (
+          <>
+            <form onSubmit={handleSubmit}>
+              <Box
+                component="form"
+                sx={{
+                  '& > :not(style)': { m: 1, width: '25ch' },
+                }}
+                noValidate
+                autoComplete="off"
+              >
+                <TextField id="outlined-basic" label="Nom de la tâche" variant="outlined" style={{ border: '2px solid #549fb3', borderRadius: "4px" }}
+                  type="text"
+                  name="name"
+                  value={newTask.name}
+                  onChange={handleChange}
+                  placeholder="Nom de la tâche"
+                  required
 
-              />
+                />
 
-              {/* <input
+                {/* <input
               type="text"
               name="name"
               value={newTask.name}
@@ -156,41 +157,41 @@ const App = () => {
               placeholder="Nom de la tâche"
               required
             /> */}
-              <TextField id="outlined-basic" label="Durée de la tâche" variant="outlined" style={{border: '2px solid black', borderRadius: "4px"}}
-                type="number"
-                name="duration"
-                value={newTask.duration}
-                onChange={handleChange}
-                placeholder="Durée (jours)"
-                required
-              />
-              <select
-                name="prevTasks"
-                value={newTask.prevTasks}
-                onChange={handleSelectChange}
-                multiple
-              >
-                {selectedProjectObj.tasks.map((task) => (
-                  <option key={task.id} value={task.id}>
-                    {task.name}
-                  </option>
-                ))}
-              </select>
-            </Box>
-            <Button type="submit" variant="contained">Ajouter une tâche</Button>
-          </form>
-          <TaskBoard tasks={selectedProjectObj.tasks} />
+                <TextField id="outlined-basic" label="Durée de la tâche" variant="outlined" style={{ border: '2px solid #549fb3', borderRadius: "4px" }}
+                  type="number"
+                  name="duration"
+                  value={newTask.duration}
+                  onChange={handleChange}
+                  placeholder="Durée (jours)"
+                  required
+                />
+                <select
+                  name="prevTasks"
+                  value={newTask.prevTasks}
+                  onChange={handleSelectChange}
+                  multiple
+                >
+                  {selectedProjectObj.tasks.map((task) => (
+                    <option key={task.id} value={task.id}>
+                      {task.name}
+                    </option>
+                  ))}
+                </select>
+              </Box>
+              <Button type="submit" variant="contained" style={{ backgroundColor: '#549fb3', color: '#ffffff' }}>Ajouter une tâche</Button>
+            </form>
+            <TaskBoard tasks={selectedProjectObj.tasks} />
 
-          <h1>
-            {projects.map((project) => (
-              <p key={project.id} value={project.id}>
-                Projet : {project.name}
-              </p>
-            ))}
-          </h1>
-          <PERTChart tasks={selectedProjectObj.tasks} />
-        </>
-      )}
+            <h1>
+              {projects.map((project) => (
+                <p key={project.id} value={project.id}>
+                  Projet : {project.name}
+                </p>
+              ))}
+            </h1>
+            <PERTChart tasks={selectedProjectObj.tasks} />
+          </>
+        )}
       </div>
     </div>
   );
